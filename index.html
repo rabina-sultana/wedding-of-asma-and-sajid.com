@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asma & Sajid's Wedding</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&family=Dancing+Script&family=Sacramento&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      color: white;
+      text-align: center;
+      background-color: #f8f8f8;
+    }
+
+    #welcomeSection {
+      background: url('https://en.idei.club/uploads/posts/2023-06/1685637681_en-idei-club-p-light-floral-background-dizain-1.jpg') center/cover no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .welcome-line {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      font-weight: bold;
+      margin: 10px 0;
+      opacity: 0;
+      color: #000000;
+      text-shadow: 2px 2px 2px rgba(174, 158, 158, 0.95);
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    #line1 { animation-delay: 1s; }
+    #line2 { animation-delay: 3s; }
+    #line3 { animation-delay: 5s; }
+
+    #mainContent {
+      display: none;
+      background-image: url('https://t3.ftcdn.net/jpg/07/64/61/74/360_F_764617449_BdInheQjvZEnTBX7nV8zO3yyCcPi4Mh4.jpg');
+      background-size: cover;
+      background-position: center;
+      backdrop-filter: brightness(0.8);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 50px;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    #mainContent p {
+      font-size: 28px; /* Font size for your message */
+      font-family: 'Dancing Script', cursive;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    h2 {
+      font-family: 'Sacramento';
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #fffb00d0;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .button {
+      font-size: 20px;
+      padding: 10px 20px;
+      background-color: #f06292;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    .popup-form {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      color: black;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .form-container textarea,
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Modify wishes container to auto resize */
+    .wishes-container {
+      margin-top: 40px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      display: block;
+      font-family: 'Roboto', sans-serif;
+      max-width: 100%;
+      overflow-y: auto;
+      max-height: 500px; /* Adjust height as needed */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .wishes-container h3 {
+      font-size: 18px;
+      color: #fdfdfd;
+    }
+
+    .wish {
+      font-size: 18px;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      color: black;
+      position: relative;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .delete-button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .notification {
+      margin-top: 20px;
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: none;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Welcome Section -->
+  <div id="welcomeSection">
+    <div class="welcome-line" id="line1">Welcome to Asma and Sajid's Wedding Celebration!</div>
+    <div class="welcome-line" id="line2">Thank you for joining us on this special day!</div>
+    <div class="welcome-line" id="line3">Let’s send our love and blessings to the beautiful couple!</div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="mainContent">
+    <h2 id="countdown"></h2>
+    <h1>To my dearest sister Asma and her amazing partner Sajid, congratulations on your beautiful wedding!</h1>
+    <p>May your journey together be filled with endless love, happiness, and unforgettable moments. Wishing you both a lifetime of joy and beautiful memories. So much love from your little sister!</p>
+    <p>— From your little sister, Rabina!</p>
+
+    <button class="button" onclick="openPopup()">Add Your Wishes</button>
+
+    <div class="popup-form" id="popupForm">
+      <div class="form-container">
+        <h3>Add Your Congratulations</h3>
+        <textarea id="wishMessage" rows="4" placeholder="Type your message here..." required></textarea>
+        <button onclick="submitMessage()">Submit</button>
+        <button onclick="closePopup()">Close</button>
+      </div>
+    </div>
+
+    <div class="wishes-container" id="wishesContainer">
+      <h3>Wishes from Others:</h3>
+    </div>
+
+    <div class="notification" id="notification">Thank you for your beautiful message!</div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('welcomeSection').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+    }, 8000); // 8 seconds
+
+    const countdownElement = document.getElementById("countdown");
+    const weddingDate = new Date("June 10, 2025 00:00:00").getTime();
+
+    const countdown = setInterval(function () {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        countdownElement.innerHTML = "💍 The wait is over — Asma and Sajid are finally tying the knot today!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s until the big day!`;
+    }, 1000);
+
+    function openPopup() {
+      document.getElementById("popupForm").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popupForm").style.display = "none";
+    }
+
+    function submitMessage() {
+      const message = document.getElementById("wishMessage").value;
+
+      if (message.trim() !== "") {
+        const wish = document.createElement("div");
+        wish.classList.add("wish");
+        wish.textContent = message;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = () => deleteWish(wish);
+
+        wish.appendChild(deleteButton);
+
+        const wishesContainer = document.getElementById("wishesContainer");
+        wishesContainer.style.display = "block";
+        wishesContainer.appendChild(wish);
+
+        const notification = document.getElementById("notification");
+        notification.style.display = "block";
+        setTimeout(() => notification.style.display = "none", 3000);
+
+        closePopup();
+      }
+    }
+
+    function deleteWish(wish) {
+      wish.remove();
+    }
+  </script>
+
+</body>
+</html>
